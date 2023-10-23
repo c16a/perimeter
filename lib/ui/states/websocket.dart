@@ -184,8 +184,6 @@ class WebSocketConfigViewState extends State<ConfigView> {
                                     ),
                                   );
                                 });
-
-                            return Text(items);
                           }))
             ],
           ),
