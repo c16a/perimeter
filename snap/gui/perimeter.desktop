@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Perimeter
+Comment=Cross platform API testing environment
+Exec=perimeter
+Icon=${SNAP}/meta/gui/perimeter.png
+Terminal=false
+Type=Application
+Categories=Development;

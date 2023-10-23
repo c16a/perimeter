@@ -1,0 +1,30 @@
+name: perimeter
+version: 0.1.0
+summary: Perimeter
+description: Cross platform API testing environment
+
+confinement: strict
+base: core22
+grade: devel
+
+parts:
+  perimeter:
+    source: .
+    plugin: flutter
+    flutter-target: lib/main.dart
+
+slots:
+  dbus-perimeter:
+    interface: dbus
+    bus: session
+    name: com.c16a.perimeter
+
+apps:
+  perimeter:
+    command: perimeter
+    extensions:
+      - gnome
+    plugs:
+      - network
+    slots:
+      - dbus-perimeter
