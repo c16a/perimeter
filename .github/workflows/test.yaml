@@ -1,4 +1,4 @@
-name: Tests
+name: PR Check
 on:
   workflow_dispatch:
   push:
@@ -7,15 +7,53 @@ on:
   pull_request:
     branches:
       - main
-jobs:
-  build:
+jobs:    
+  test:
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Flutter 
+        run: |
+          sudo snap install flutter --classic
+      - name: Run tests
+        run: |
+          flutter test
+  build-snap:
+    runs-on: ubuntu-latest
+    needs:
+      - test
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Flutter
         run: |
           sudo snap install flutter --classic
-      - name: Run tests
+      - name: Run snapcraft
+        uses: snapcore/action-build@v1
+  build-android:
+    runs-on: ubuntu-latest
+    needs: 
+      - test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Flutter
         run: |
-          flutter test
+          sudo snap install flutter --classic
+      - name: Flutter AAB
+        run: |
+          flutter build appbundle
+  build-macos:
+    runs-on: macos-13
+    needs:
+      - test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Flutter
+        run: |
+          brew install flutter
+      - name: Flutter macOS build
+        run: |
+          flutter build macos
