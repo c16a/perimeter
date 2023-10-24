@@ -20,7 +20,7 @@ jobs:
       - build-snap
     uses: ./.github/workflows/publish-snap.yaml
     with:
-      snap-path: ${{ build-snap.outputs.snap-path }}
+      snap-path: ${{ needs.build-snap.outputs.snap-path }}
       release: edge
     secrets:
       snapcraft-store-credentials: ${{ secrets.SNAPCRAFT_STORE_CREDENTIALS }}
