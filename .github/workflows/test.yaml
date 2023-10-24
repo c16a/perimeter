@@ -2,7 +2,7 @@ on:
   workflow_call:
 
 jobs:
-  test-job:
+  test:
     runs-on: ubuntu-latest
     container: ghcr.io/cirruslabs/flutter:3.13.8
     steps:

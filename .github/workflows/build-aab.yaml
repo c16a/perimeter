@@ -2,7 +2,7 @@ on:
   workflow_call:
 
 jobs:
-  build-aab-job:
+  build-aab:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

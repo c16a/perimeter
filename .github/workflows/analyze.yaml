@@ -2,10 +2,12 @@ on:
   workflow_call:
 
 jobs:
-  build-snap:
+  analyse:
     runs-on: ubuntu-latest
+    container: ghcr.io/cirruslabs/flutter:3.13.8
     steps:
       - name: "Checkout"
         uses: actions/checkout@v4
-      - name: "Run Snapcraft"
-        uses: snapcore/action-build@v1
+      - name: "Run Lint"
+        run: |
+          flutter analyze

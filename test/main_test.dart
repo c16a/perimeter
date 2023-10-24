@@ -3,6 +3,6 @@ import 'package:perimeter/main.dart';
 
 void main() {
   testWidgets('app should work', (tester) async {
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(const MyApp());
   });
 }

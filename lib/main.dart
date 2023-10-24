@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'ui/views/config_view.dart';
 import 'item.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,13 +22,15 @@ class MyApp extends StatelessWidget {
             create: (context) => HttpRequestConfigBloc(),
           ),
         ],
-        child: MasterDetailLayout(),
+        child: const MasterDetailLayout(),
       ),
     );
   }
 }
 
 class MasterDetailLayout extends StatelessWidget {
+  const MasterDetailLayout({super.key});
+
   @override
   Widget build(BuildContext context) {
     final isWideScreen = MediaQuery.of(context).size.width > 600;
@@ -37,11 +41,11 @@ class MasterDetailLayout extends StatelessWidget {
       ),
       body: Row(
         children: <Widget>[
-          Expanded(
+          const Expanded(
             child: MasterList(),
           ),
           if (isWideScreen)
-            Expanded(
+            const Expanded(
               child: ConfigView(),
             )
         ],
@@ -51,6 +55,8 @@ class MasterDetailLayout extends StatelessWidget {
 }
 
 class MasterList extends StatefulWidget {
+  const MasterList({super.key});
+
   @override
   _MasterListState createState() => _MasterListState();
 }
@@ -75,7 +81,7 @@ class _MasterListState extends State<MasterList> {
             });
             itemBloc.selectItem(newItem);
           },
-          child: Text('New Request'),
+          child: const Text('New Request'),
         ),
         Expanded(
           child: ListView.builder(
