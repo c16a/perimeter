@@ -3,8 +3,10 @@ on:
     inputs:
       snap-path:
         required: true
+        type: string
       release:
         required: true
+        type: string
     secrets:
       snapcraft-store-credentials:
         required: true
