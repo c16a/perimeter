@@ -3,7 +3,6 @@ on:
 
 jobs:
   build-aab-job:
-    name: Build Android App Bundle
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

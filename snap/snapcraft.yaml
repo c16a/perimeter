@@ -11,7 +11,7 @@ parts:
   perimeter:
     source: .
     plugin: flutter
-    flutter-revision: 3.13.8
+    flutter-channel: stable
     flutter-target: lib/main.dart
 
 slots:
