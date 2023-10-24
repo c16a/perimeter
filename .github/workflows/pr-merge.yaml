@@ -15,11 +15,20 @@ jobs:
     needs:
       - test
     uses: ./.github/workflows/build-snap.yaml
-  build-aab:
+  publish-snap:
     needs:
-      - test
-    uses: ./.github/workflows/build-aab.yaml
-  build-macos:
-    needs:
-      - test
-    uses: ./.github/workflows/build-macos.yaml
+      - build-snap
+    uses: ./.github/workflows/publish-snap.yaml
+    with:
+      snap-path: ${{ jobs.build-snap.outputs.snap-path }}
+      release: edge
+    secrets:
+      snapcraft-store-credentials: ${{ secrets.SNAPCRAFT_STORE_CREDENTIALS }}
+#  build-aab:
+#    needs:
+#      - test
+#    uses: ./.github/workflows/build-aab.yaml
+#  build-macos:
+#    needs:
+#      - test
+#    uses: ./.github/workflows/build-macos.yaml

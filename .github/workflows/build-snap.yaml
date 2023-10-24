@@ -1,11 +1,17 @@
 on:
   workflow_call:
-
+    outputs:
+      snap-path:
+        description: Path of the built snap
+        value: ${{ jobs.build-snap.outputs.snap-path }}
 jobs:
   build-snap:
     runs-on: ubuntu-latest
+    outputs:
+      snap-path: ${{ steps.build.outputs.snap }}
     steps:
       - name: "Checkout"
         uses: actions/checkout@v4
       - name: "Run Snapcraft"
+        id: "build"
         uses: snapcore/action-build@v1

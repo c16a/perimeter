@@ -1,0 +1,22 @@
+on:
+  workflow_call:
+    inputs:
+      snap-path:
+        required: true
+      release:
+        required: true
+    secrets:
+      snapcraft-store-credentials:
+        required: true
+
+jobs:
+  publish-snap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Run Snapcraft"
+        uses: snapcore/action-publish@v1
+        env:
+          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.snapcraft-store-credentials }}
+        with:
+          snap: ${{ inputs.snap-path }}
+          release: ${{ inputs.release }}
