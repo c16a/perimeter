@@ -12,3 +12,5 @@ jobs:
           sudo snap install flutter --classic
       - name: "Run Snapcraft"
         uses: snapcore/action-build@v1
+        with:
+          path: builders/
