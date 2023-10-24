@@ -15,6 +15,10 @@ jobs:
   publish-snap:
     runs-on: ubuntu-latest
     steps:
+      - name: "Download snap artifact"
+        uses: actions/download-artifact@v3
+        with:
+          name: snap-artifact
       - name: "Run Snapcraft"
         uses: snapcore/action-publish@v1
         env:
