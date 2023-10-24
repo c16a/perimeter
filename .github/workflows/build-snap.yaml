@@ -3,6 +3,7 @@ on:
 
 jobs:
   build-snap-job:
+    name: Build Linux-compatible Snap package
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"

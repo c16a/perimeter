@@ -4,12 +4,10 @@ on:
 jobs:
   test-job:
     runs-on: ubuntu-latest
+    container: ghcr.io/cirruslabs/flutter:3.13.8
     steps:
       - name: "Checkout"
         uses: actions/checkout@v4
-      - name: "Setup Flutter"
-        run: |
-          sudo snap install flutter --classic
       - name: "Run tests"
         run: |
           flutter test
