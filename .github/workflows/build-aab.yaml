@@ -2,14 +2,14 @@ on:
   workflow_call:
 
 jobs:
-  test-job:
+  build-aab-job:
     runs-on: ubuntu-latest
     steps:
-      - name: "Checkout"
+      - name: Checkout
         uses: actions/checkout@v4
-      - name: "Setup Flutter"
+      - name: Setup Flutter
         run: |
           sudo snap install flutter --classic
-      - name: "Run tests"
+      - name: Flutter AAB
         run: |
-          flutter test
+          flutter build appbundle

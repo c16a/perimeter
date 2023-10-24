@@ -1,0 +1,21 @@
+name: "PR Check"
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - "main"
+jobs:
+  test:
+    uses: ./.github/workflows/test.yaml
+  build-snap:
+    needs:
+      - test
+    uses: ./.github/workflows/build-snap.yaml
+  build-aab:
+    needs:
+      - test
+    uses: ./.github/workflows/build-aab.yaml
+  build-macos:
+    needs:
+      - test
+    uses: ./.github/workflows/build-macos.yaml
