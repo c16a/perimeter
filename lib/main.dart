@@ -58,10 +58,10 @@ class MasterList extends StatefulWidget {
   const MasterList({super.key});
 
   @override
-  _MasterListState createState() => _MasterListState();
+  MasterListState createState() => MasterListState();
 }
 
-class _MasterListState extends State<MasterList> {
+class MasterListState extends State<MasterList> {
   List<HttpRequestConfig> items = [
     HttpRequestConfig(1, 'Movie 1'),
     HttpRequestConfig(2, 'Movie 2'),
