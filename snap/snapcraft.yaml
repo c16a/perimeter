@@ -9,9 +9,10 @@ grade: devel
 
 parts:
   perimeter:
-    source: ./..
+    source: .
     plugin: flutter
-    flutter-target: ../lib/main.dart
+    flutter-revision: 3.13.8
+    flutter-target: lib/main.dart
 
 slots:
   dbus-perimeter:
